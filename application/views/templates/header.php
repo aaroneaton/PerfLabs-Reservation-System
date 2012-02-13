@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
   <title><?php echo $title; ?> - PerfLabs Reservations</title>
-  <link media="all" rel="stylesheet" href="/assets/css/bootstrap.css" type="text/css" />
+  <link media="all" rel="stylesheet" href="<?php echo base_url(); ?>assets/css/bootstrap.css" type="text/css" />
 </head>
 <body>
 
