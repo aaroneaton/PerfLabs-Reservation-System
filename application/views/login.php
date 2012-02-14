@@ -1,14 +1,11 @@
-<?php
-<html>
+<!DOCTYPE HTML>
+<html lang="en">
 <head>
-    <title>Login | PHP CAS Standalone Example</title>
+	<meta charset="UTF-8">
+	<title></title>
 </head>
 <body>
-
-<a href="./index.php">&laquo; Home</a>
-
-<pre><?php isset($_SESSION['auth']) ? print_r($_SESSION['auth']) : 'NO AUTHENTICATION DATA PRESENT'; ?></pre>
-
+<?php echo $text; ?>
+<?php print_r($auth); ?>
 </body>
 </html>
-

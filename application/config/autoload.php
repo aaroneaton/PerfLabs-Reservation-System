@@ -52,7 +52,7 @@ $autoload['packages'] = array();
 |	$autoload['libraries'] = array('database', 'session', 'xmlrpc');
 */
 
-$autoload['libraries'] = array( 'cas_auth', 'session', 'database' );
+$autoload['libraries'] = array( 'cas_client', 'cas_start', 'session', 'database' );
 
 
 /*
@@ -80,7 +80,7 @@ $autoload['helper'] = array( 'url' );
 |
 */
 
-$autoload['config'] = array( 'cas_auth' );
+$autoload['config'] = array( '' );
 
 
 /*
@@ -109,7 +109,7 @@ $autoload['language'] = array();
 |
 */
 
-$autoload['model'] = array( 'cas_auth_model' );
+$autoload['model'] = array( '' );
 
 
 /* End of file autoload.php */

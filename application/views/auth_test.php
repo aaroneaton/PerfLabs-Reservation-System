@@ -1,6 +1,6 @@
 <?php
 
-require_once dirname(__FILE__) . '/common.php';
+//require_once dirname(__FILE__) . '/common.php';
 ?>
 
 <!DOCTYPE HTML>
@@ -10,16 +10,16 @@ require_once dirname(__FILE__) . '/common.php';
 	<title>PHP CAS Test Page</title>
 </head>
 <body>
-<?php if ( isset( $_SESSION['auth']) ) : ?>
+<?php if ( !empty($auth) ) : ?>
 <p>
 	<a href="./logout.php">Log Out</a>
 </p>
-<pre><?php print_r($_SESSION['auth']); ?></pre>
+<pre><?php print_r($session['auth']); ?></pre>
 <?php else : ?>
 <p>
 <?php echo anchor( 'auth_test/login', 'Log In'); ?>
 </p>
-<pre><?php print_r($_SESSION); ?></pre>
+<pre><?php print_r($this->session->userdata('auth')); ?></pre>
 <?php endif; ?>
 </body>
 </html>

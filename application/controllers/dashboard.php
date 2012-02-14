@@ -19,6 +19,7 @@ class Dashboard extends CI_Controller {
     $this->load->view( 'templates/header', $data );
     $this->load->view( 'dashboard/user', $data );
     $this->load->view( 'templates/footer' );
+    $this->output->enable_profiler(TRUE);
   
   }
 
