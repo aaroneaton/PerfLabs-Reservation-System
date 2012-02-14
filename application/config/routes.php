@@ -39,8 +39,6 @@
 */
 
 $route[ 'default_controller' ] = 'dashboard';
-$route[ '(:any)' ] = 'dashboard';
-
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */
