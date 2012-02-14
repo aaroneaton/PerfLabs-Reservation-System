@@ -1,4 +1,4 @@
-<?php
+<?php if ( ! defined( 'BASEPATH' ) ) exit( 'No direct script access allowed' );
 
 class Auth extends CI_Controller {
 
@@ -19,9 +19,9 @@ class Auth extends CI_Controller {
 
   public function login() {
   
-    $data['auth'] = $this->session->userdata('auth');
+    $auth = $this->session->userdata('netID');
 
-    if( empty($data['auth']) ) {
+    if( empty($auth) ) {
     
       $version_3 = array(
         'serverHostname' => 'cas-dev.tamu.edu',
@@ -53,15 +53,13 @@ class Auth extends CI_Controller {
         );
         $this->session->set_userdata($auth);
 
-        redirect( '/auth/', 'refresh');
+        redirect( '/auth/', 'location', 302 );
         // header('Location: /auth_test', true, 302);
       }
       
     } else {
 
-      $data['text'] = 'Hello World!';
-      $this->output->enable_profiler(TRUE);
-      $this->load->view( 'login', $data );
+      redirect( '/dashboard/', 'location', 302 );
 
     }
 
