@@ -41,10 +41,12 @@ class Auth_test extends CI_Controller {
       }
       else
       {
+        $ticketID = $ticket->getTicketID();
         $netID = $ticket->getNetID();
         $uin = $ticket->getUIN();
 
         $auth = array(
+          'ticketID' => $ticketID,
           'netID' => $netID,
           'uin' => $uin,
         );
@@ -68,6 +70,7 @@ class Auth_test extends CI_Controller {
   public function logout() {
   
     $array_items = array(
+      'ticketID' => '',
       'netID' => '',
       'uin' => '',
     );
