@@ -41,13 +41,17 @@ class Auth_test extends CI_Controller {
       }
       else
       {
+        $netID = $ticket->getNetID();
+        $uin = $ticket->getUIN();
 
         $auth = array(
-          'auth' => $ticket,
+          'netID' => $netID,
+          'uin' => $uin,
         );
         $this->session->set_userdata($auth);
-        
-        redirect( 'auth_test/index', 'location', 302);
+
+        redirect( '/auth_test', 'refresh');
+        // header('Location: /auth_test', true, 302);
       }
       
     } else {
@@ -58,6 +62,19 @@ class Auth_test extends CI_Controller {
 
     }
 
+  
+  }
+
+  public function logout() {
+  
+    $array_items = array(
+      'netID' => '',
+      'uin' => '',
+    );
+
+    $this->session->unset_userdata( $array_items );
+    
+    redirect( '/auth_test', 'refresh');
   
   }
 

@@ -10,16 +10,18 @@
 	<title>PHP CAS Test Page</title>
 </head>
 <body>
-<?php if ( !empty($auth) ) : ?>
+<?php $sNetID = $this->session->userdata('netID'); ?>
+<?php if ( !empty($sNetID) ) : ?>
 <p>
-	<a href="./logout.php">Log Out</a>
+<?php echo anchor( 'auth_test/logout', 'Log Out'); ?>
+
 </p>
-<pre><?php print_r($session['auth']); ?></pre>
+<pre><?php print_r($this->session->all_userdata()); ?></pre>
 <?php else : ?>
 <p>
 <?php echo anchor( 'auth_test/login', 'Log In'); ?>
 </p>
-<pre><?php print_r($this->session->userdata('auth')); ?></pre>
+<pre><?php print_r($this->session->all_userdata()); ?></pre>
 <?php endif; ?>
 </body>
 </html>

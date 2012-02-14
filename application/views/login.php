@@ -5,7 +5,7 @@
 	<title></title>
 </head>
 <body>
-<?php echo $text; ?>
-<?php print_r($auth); ?>
+<?php print_r($netID); ?>
+<?php print_r($this->session->all_userdata()); ?>
 </body>
 </html>
