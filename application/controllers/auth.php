@@ -1,11 +1,12 @@
 <?php
 
-class Auth_test extends CI_Controller {
+class Auth extends CI_Controller {
 
   public function __construct() {
   
     parent::__construct();
   
+    $this->cas_client->registerAutoload();
   }
 
   public function index() {
@@ -52,7 +53,7 @@ class Auth_test extends CI_Controller {
         );
         $this->session->set_userdata($auth);
 
-        redirect( '/auth_test', 'refresh');
+        redirect( '/auth/', 'refresh');
         // header('Location: /auth_test', true, 302);
       }
       
@@ -77,7 +78,7 @@ class Auth_test extends CI_Controller {
 
     $this->session->unset_userdata( $array_items );
     
-    redirect( '/auth_test', 'refresh');
+    redirect( '/auth/', 'refresh');
   
   }
 
