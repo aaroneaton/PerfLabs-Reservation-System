@@ -1,14 +1,37 @@
 <?php if ( ! defined( 'BASEPATH' ) ) exit( 'No direct script access allowed' );
 
+/*
+ * Auth Controller
+ *
+ * Uses CAS_Client library (autoloaded)
+ *
+ * Methods:
+ * index - Determines if user is logged in and redirects to proper method/controller
+ * login - Determines again if user is logged in. Logs in user via CAS then redirects to Dashboard
+ * logout - Erases session information to log out the user
+ *
+ */
+
 class Auth extends CI_Controller {
 
   public function __construct() {
   
     parent::__construct();
   
+    // Load the required classes for CAS_Client library
     $this->cas_client->registerAutoload();
   }
 
+  /**
+   * Method: index();
+   *
+   * Determines if the user is logged in.
+   *
+   * Logged in = Redirect to Dashboard
+   *
+   * Logged out = Redirect to auth/login
+   *
+   */
   public function index() {
   
     $this->output->enable_profiler(TRUE);
@@ -17,6 +40,12 @@ class Auth extends CI_Controller {
   
   }
 
+  /**
+   * Method: login();
+   *
+   * Handles the login process with CAS. Redirects to Dashboard if already logged in.
+   *
+   */
   public function login() {
   
     $auth = $this->session->userdata('netID');
@@ -66,6 +95,12 @@ class Auth extends CI_Controller {
   
   }
 
+  /**
+   * Method: logout();
+   *
+   * Logs the user out by destroying the vital session data
+   *
+   */
   public function logout() {
   
     $array_items = array(
