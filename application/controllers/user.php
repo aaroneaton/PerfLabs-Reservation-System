@@ -28,6 +28,12 @@ class User extends CI_Controller {
    *
    */
   public function index() {
+
+    // Check if user is administrator
+    // If not, show 'no access' page
+
+    // Else, query database for all users
+    // Table should only show Name, email, and role
   
     $this->load->view( 'templates/header');
     $this->load->view( 'error/empty_method');
@@ -44,6 +50,11 @@ class User extends CI_Controller {
    *
    */
   public function show() {
+
+    // Check if user is an admin OR user ID = current user ID
+    // If not, show 'no access' page
+    //
+    // Else, query database for user ID
   
     $this->load->view( 'templates/header');
     $this->load->view( 'error/empty_method');
@@ -61,6 +72,19 @@ class User extends CI_Controller {
    *
    */
   public function create() {
+
+    // Check if user is an admin
+    // If not, show 'no access' page
+    //
+    // Else, move on to form
+    //
+    // // Check if form validation has run
+    // // If not, load the form view
+    // //
+    // // Else, create the records in database
+    // // // If record creation passes, redirect to user/index and set flash as successful
+    // // //
+    // // // Else, redirect to user/create and set flash to fail with error message
   
     $this->load->view( 'templates/header');
     $this->load->view( 'error/empty_method');
