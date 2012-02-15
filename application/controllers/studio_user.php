@@ -29,6 +29,10 @@ class Studio_user extends CI_Controller {
    */
   public function index() {
   
+    $this->load->view( 'templates/header');
+    $this->load->view( 'error/empty_method');
+    $this->load->view( 'templates/footer');
+    $this->output->enable_profiler(TRUE);
   
   
   }
@@ -42,6 +46,10 @@ class Studio_user extends CI_Controller {
    */
   public function create() {
   
+    $this->load->view( 'templates/header');
+    $this->load->view( 'error/empty_method');
+    $this->load->view( 'templates/footer');
+    $this->output->enable_profiler(TRUE);
   
   
   }
@@ -55,6 +63,10 @@ class Studio_user extends CI_Controller {
    */
   public function view() {
   
+    $this->load->view( 'templates/header');
+    $this->load->view( 'error/empty_method');
+    $this->load->view( 'templates/footer');
+    $this->output->enable_profiler(TRUE);
   
   
   }
@@ -68,6 +80,10 @@ class Studio_user extends CI_Controller {
    */
   public function edit() {
   
+    $this->load->view( 'templates/header');
+    $this->load->view( 'error/empty_method');
+    $this->load->view( 'templates/footer');
+    $this->output->enable_profiler(TRUE);
   
   
   }
@@ -81,6 +97,10 @@ class Studio_user extends CI_Controller {
    */
   public function remove() {
   
+    $this->load->view( 'templates/header');
+    $this->load->view( 'error/empty_method');
+    $this->load->view( 'templates/footer');
+    $this->output->enable_profiler(TRUE);
     
   
   }

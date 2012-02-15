@@ -31,6 +31,10 @@ class Request extends CI_Controller {
    */
   public function index() {
   
+    $this->load->view( 'templates/header');
+    $this->load->view( 'error/empty_method');
+    $this->load->view( 'templates/footer');
+    $this->output->enable_profiler(TRUE);
   
   
   }
@@ -44,6 +48,10 @@ class Request extends CI_Controller {
    */
   public function create() {
   
+    $this->load->view( 'templates/header');
+    $this->load->view( 'error/empty_method');
+    $this->load->view( 'templates/footer');
+    $this->output->enable_profiler(TRUE);
   
   
   }
@@ -57,6 +65,10 @@ class Request extends CI_Controller {
    */
   public function view() {
   
+    $this->load->view( 'templates/header');
+    $this->load->view( 'error/empty_method');
+    $this->load->view( 'templates/footer');
+    $this->output->enable_profiler(TRUE);
   
   
   }
@@ -70,6 +82,10 @@ class Request extends CI_Controller {
    */
   public function edit() {
   
+    $this->load->view( 'templates/header');
+    $this->load->view( 'error/empty_method');
+    $this->load->view( 'templates/footer');
+    $this->output->enable_profiler(TRUE);
   
   
   }
@@ -83,6 +99,10 @@ class Request extends CI_Controller {
    */
   public function checkout() {
   
+    $this->load->view( 'templates/header');
+    $this->load->view( 'error/empty_method');
+    $this->load->view( 'templates/footer');
+    $this->output->enable_profiler(TRUE);
   
   
   }
@@ -96,6 +116,10 @@ class Request extends CI_Controller {
    */
   public function checkin() {
   
+    $this->load->view( 'templates/header');
+    $this->load->view( 'error/empty_method');
+    $this->load->view( 'templates/footer');
+    $this->output->enable_profiler(TRUE);
   
   
   }
@@ -109,6 +133,10 @@ class Request extends CI_Controller {
    */
   public function cancel() {
   
+    $this->load->view( 'templates/header');
+    $this->load->view( 'error/empty_method');
+    $this->load->view( 'templates/footer');
+    $this->output->enable_profiler(TRUE);
   
   
   }
