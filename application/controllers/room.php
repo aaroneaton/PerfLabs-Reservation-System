@@ -5,7 +5,7 @@
  *
  * Methods:
  * index - Lists all rooms
- * new - Creates form to add new room
+ * create - Creates form to add new room
  * view - Displays a single room
  * edit - Creates form to edit room
  * remove - Removes room
@@ -34,13 +34,13 @@ class room extends CI_Controller {
   }
 
   /**
-   * Method: new();
+   * Method: create();
    * @access Administrator, Manager
    *
    * Creates form to add new room
    *
    */
-  public function new() {
+  public function create() {
   
   
   

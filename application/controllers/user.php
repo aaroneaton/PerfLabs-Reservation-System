@@ -6,7 +6,7 @@
  * Methods:
  * index - Shows a list of all users in the application
  * show - Displays the selected user's profile
- * add - Creates form to add user
+ * create - Creates form to add user
  * edit - Creates form to edit the user profile
  * remove - Removes the user completely
  *
@@ -47,13 +47,13 @@ class User extends CI_Controller {
   }
 
   /**
-   * Method: add();
+   * Method: create();
    * @access Administrator
    *
    * Creates form to add user
    *
    */
-  public function add() {
+  public function create() {
   
   
   

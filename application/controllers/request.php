@@ -5,7 +5,7 @@
  *
  * Methods:
  * index - Lists all requests
- * new - Creates form to add new request
+ * create - Creates form to add new request
  * view - Displays a single request
  * edit - Creates form to edit request
  * checkout - Creates form to checkout equipment
@@ -36,13 +36,13 @@ class Request extends CI_Controller {
   }
 
   /**
-   * Method:new();
+   * Method:create();
    * @access All
    *
    * Creates form to add new request
    *
    */
-  public function new() {
+  public function create() {
   
   
   

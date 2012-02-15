@@ -5,7 +5,7 @@
  *
  * Methods:
  * index - Lists entire inventory
- * new - Creates form to add new equipment
+ * create - Creates form to add new equipment
  * view - Displays a single equipment item
  * edit - Creates form to edit equipment item
  * remove - Removes equipment item from inventory
@@ -34,13 +34,13 @@ class Equipment extends CI_Controller {
   }
 
   /**
-   * Method: new();
+   * Method: create();
    * @access Administrator, Manager
    *
    * Creates form to add new equipment
    *
    */
-  public function new() {
+  public function create() {
   
   
   

@@ -5,7 +5,7 @@
  *
  * Methods:
  * index - Lists all storage locations
- * new - Creates form to add new storage location
+ * create - Creates form to add new storage location
  * view - Displays a single storage location
  * edit - Creates form to edit storage location
  * remove - Removes storage location
@@ -34,13 +34,13 @@ class Location extends CI_Controller {
   }
 
   /**
-   * Method: new();
+   * Method: create();
    * @access Administrator, Manager
    *
    * Creates form to add new storage location
    *
    */
-  public function new() {
+  public function create() {
   
   
   

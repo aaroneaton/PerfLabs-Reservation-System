@@ -5,7 +5,7 @@
  *
  * Methods:
  * index - Lists all studio users
- * new - Creates form to add new studio user
+ * create - Creates form to add new studio user
  * view - Displays a single studio user
  * edit - Creates form to edit studio user
  * remove - Removes studio user
@@ -34,13 +34,13 @@ class Studio_user extends CI_Controller {
   }
 
   /**
-   * Method: new();
+   * Method: create();
    * @access Administrator, Manager
    *
    * Creates form to add new studio user
    *
    */
-  public function new() {
+  public function create() {
   
   
   
