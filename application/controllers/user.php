@@ -48,6 +48,7 @@ class User extends CI_Controller {
    *
    * Displays the selected user's profile
    *
+   * @param int UserID
    */
   public function show() {
 
@@ -95,12 +96,26 @@ class User extends CI_Controller {
   }
 
   /** Method: edit();
-   * @access Administrator
+   * @access Administrator, User ( own profile only )
    *
    * Creates form to edit the user profile
    *
+   * @param int UserID
    */
   public function edit() {
+
+    // Check if user is an admin OR user ID = current user ID
+    // If not, show no access page
+    //
+    // Else, query database for the user ID
+    //
+    // // Check if form validation has run
+    // // If not, load the form view
+    // //
+    // // Else, update the record in database
+    // // // If record update passes, redirect to user/show and set flash as successful
+    // // //
+    // // // Else, redirect to user/edit and set flash to fail with error message
   
     $this->load->view( 'templates/header');
     $this->load->view( 'error/empty_method');
@@ -116,8 +131,15 @@ class User extends CI_Controller {
    *
    * Removes the user completely from the database
    *
+   * @param int UserID
+   *
    */
   public function remove() {
+
+    // Check if user is an admin
+    // If not, show 'no access' page
+    //
+    // Else, remove user record from database
   
     $this->load->view( 'templates/header');
     $this->load->view( 'error/empty_method');
