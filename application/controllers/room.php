@@ -44,13 +44,13 @@ class room extends CI_Controller {
   }
 
   /** 
-   * Method: show();
+   * Method: view();
    * @access Administrator, Manager
    *
    * Displays a single room
    *
    */
-  public function show() {
+  public function view() {
   
     // Check if user is an admin OR manager
     // If not, show 'no access' page
