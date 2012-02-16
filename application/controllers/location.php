@@ -29,23 +29,12 @@ class Location extends CI_Controller {
    */
   public function index() {
   
-    $this->load->view( 'templates/header');
-    $this->load->view( 'error/empty_method');
-    $this->load->view( 'templates/footer');
-    $this->output->enable_profiler(TRUE);
-  
-  
-  }
+    // Check if user is administrator OR manager
+    // If not, show 'no access' page
 
-  /**
-   * Method: create();
-   * @access Administrator, Manager
-   *
-   * Creates form to add new storage location
-   *
-   */
-  public function create() {
-  
+    // Else, query database for all locations
+    // Table should show Building, Room #, and Area
+
     $this->load->view( 'templates/header');
     $this->load->view( 'error/empty_method');
     $this->load->view( 'templates/footer');
@@ -63,11 +52,45 @@ class Location extends CI_Controller {
    */
   public function view() {
   
+    // Check if user is an admin OR manager
+    // If not, show 'no access' page
+    //
+    // Else, query database for location ID
+
     $this->load->view( 'templates/header');
     $this->load->view( 'error/empty_method');
     $this->load->view( 'templates/footer');
     $this->output->enable_profiler(TRUE);
   
+  
+  }
+
+  /**
+   * Method: create();
+   * @access Administrator, Manager
+   *
+   * Creates form to add new storage location
+   *
+   */
+  public function create() {
+  
+    // Check if user is an admin OR manager
+    // If not, show 'no access' page
+    //
+    // Else, move on to form
+    //
+    // // Check if form validation has run
+    // // If not, load the form view
+    // //
+    // // Else, create the records in database
+    // // // If record creation passes, redirect to location/index and set flash as successful
+    // // //
+    // // // Else, redirect to location/create and set flash to fail with error message
+
+    $this->load->view( 'templates/header');
+    $this->load->view( 'error/empty_method');
+    $this->load->view( 'templates/footer');
+    $this->output->enable_profiler(TRUE);
   
   }
 
@@ -80,6 +103,19 @@ class Location extends CI_Controller {
    */
   public function edit() {
   
+    // Check if user is an admin OR manager
+    // If not, show no access page
+    //
+    // Else, query database for the location ID
+    //
+    // // Check if form validation has run
+    // // If not, load the form view
+    // //
+    // // Else, update the record in database
+    // // // If record update passes, redirect to location/show and set flash as successful
+    // // //
+    // // // Else, redirect to location/edit and set flash to fail with error message
+
     $this->load->view( 'templates/header');
     $this->load->view( 'error/empty_method');
     $this->load->view( 'templates/footer');
@@ -97,6 +133,11 @@ class Location extends CI_Controller {
    */
   public function remove() {
   
+    // Check if user is an admin
+    // If not, show 'no access' page
+    //
+    // Else, remove location record from database
+
     $this->load->view( 'templates/header');
     $this->load->view( 'error/empty_method');
     $this->load->view( 'templates/footer');
