@@ -5,7 +5,7 @@
  *
  * Methods:
  * index - Shows a list of all users in the application
- * show - Displays the selected user's profile
+ * view - Displays the selected user's profile
  * create - Creates form to add user
  * edit - Creates form to edit the user profile
  * remove - Removes the user completely
@@ -43,14 +43,14 @@ class User extends CI_Controller {
   }
 
   /**
-   * Method: show();
+   * Method: view();
    * @access Administrator, User (own profile only)
    *
    * Displays the selected user's profile
    *
    * @param int UserID
    */
-  public function show() {
+  public function view() {
 
     // Check if user is an admin OR user ID = current user ID
     // If not, show 'no access' page
