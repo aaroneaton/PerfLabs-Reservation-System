@@ -5,8 +5,8 @@
  *
  * Methods:
  * index - Lists all studio guests
- * create - Creates form to add new studio guest
  * view - Displays a single studio guest
+ * create - Creates form to add new studio guest
  * edit - Creates form to edit studio guest
  * remove - Removes studio guest
  *
@@ -44,13 +44,13 @@ class Studio_guest extends CI_Controller {
   }
 
   /** 
-   * Method: show();
+   * Method: view();
    * @access Administrator, Manager
    *
    * Displays a single studio guest
    *
    */
-  public function show() {
+  public function view() {
   
     // Check if user is an admin OR manager
     // If not, show 'no access' page
