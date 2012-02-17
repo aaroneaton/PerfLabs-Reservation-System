@@ -27,4 +27,34 @@ class Auth {
   
   }
 
+  public function is_admin() {
+  
+  
+  
+  }
+
+  public function is_manager() {
+  
+  
+  
+  }
+
+  public function is_faculty_staff() {
+  
+  
+  
+  }
+
+  public function is_studio_user() {
+  
+  
+  
+  }
+
+  public function is_student() {
+  
+  
+  
+  }
+
 }
