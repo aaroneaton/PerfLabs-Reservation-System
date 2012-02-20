@@ -31,49 +31,21 @@ class Auth_lib {
   
     if ( $this->is_logged_in() ) {
     
-      $link = '"auth/logout"';
-      $text = '"Log Out"';
+      $anchor = array(
+        'link' => 'auth/logout',
+        'text' => 'Log Out',
+      );
     
     } else {
     
-      $link = 'auth/login';
-      $text = 'Log In';
+      $anchor = array(
+        'link' => 'auth/login',
+        'text' => 'Log In',
+      );
     
     }
 
-    $anchor = ' echo anchor(' . $link . ', ' . $text . ')';
-
     return $anchor;
-  
-  }
-
-  public function is_admin() {
-  
-  
-  
-  }
-
-  public function is_manager() {
-  
-  
-  
-  }
-
-  public function is_faculty_staff() {
-  
-  
-  
-  }
-
-  public function is_studio_user() {
-  
-  
-  
-  }
-
-  public function is_student() {
-  
-  
   
   }
 

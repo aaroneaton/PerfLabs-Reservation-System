@@ -89,6 +89,7 @@ class Auth extends CI_Controller {
         
           $data = array(
             'is_logged_in' => TRUE,
+            'user_role' => $this->auth_model->get_user_role(),
           );
           $this->session->set_userdata( $data );
           redirect( '/dashboard/' );

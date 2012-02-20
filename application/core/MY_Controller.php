@@ -13,4 +13,10 @@ class MY_Controller extends CI_Controller {
     $this->data['test'] = 'TESTING!';
   }
 
+  public function nav_links() {
+  
+    
+  
+  }
+
 }

@@ -1,7 +1,6 @@
 <footer>
 
 
-
 </footer>
 
 </div><!-- .container -->

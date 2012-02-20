@@ -20,7 +20,7 @@
           	<a href="#">Account</a>
           </li>
           <li>
-          	<a href="#">Log Out</a>
+<?php echo anchor( $anchor['link'], $anchor['text'] ); ?>
           </li>
 				</ul>
 		</div>
