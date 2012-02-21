@@ -12,7 +12,9 @@
  *
  */
 
-class Location extends CI_Controller {
+class Location extends MY_Controller {
+
+  public $title = 'Storage Locations';
 
   public function __construct() {
   
@@ -35,10 +37,12 @@ class Location extends CI_Controller {
     // Else, query database for all locations
     // Table should show Building, Room #, and Area
 
-    $this->load->view( 'templates/header');
-    $this->load->view( 'error/empty_method');
-    $this->load->view( 'templates/footer');
-    $this->output->enable_profiler(TRUE);
+    $layout_data['title'] = $this->title;
+    $layout_data['navigation'] = $this->set_nav();
+    $layout_data['body'] = $this->load->view( 'error/empty_method', '', TRUE );
+    $layout_data['footer'] = $this->load->view( 'templates/footer', '', TRUE );
+
+    $this->load->view( 'layouts/main', $layout_data );
   
   
   }
@@ -57,10 +61,12 @@ class Location extends CI_Controller {
     //
     // Else, query database for location ID
 
-    $this->load->view( 'templates/header');
-    $this->load->view( 'error/empty_method');
-    $this->load->view( 'templates/footer');
-    $this->output->enable_profiler(TRUE);
+    $layout_data['title'] = $this->title;
+    $layout_data['navigation'] = $this->set_nav();
+    $layout_data['body'] = $this->load->view( 'error/empty_method', '', TRUE );
+    $layout_data['footer'] = $this->load->view( 'templates/footer', '', TRUE );
+
+    $this->load->view( 'layouts/main', $layout_data );
   
   
   }
@@ -87,10 +93,12 @@ class Location extends CI_Controller {
     // // //
     // // // Else, redirect to location/create and set flash to fail with error message
 
-    $this->load->view( 'templates/header');
-    $this->load->view( 'error/empty_method');
-    $this->load->view( 'templates/footer');
-    $this->output->enable_profiler(TRUE);
+    $layout_data['title'] = $this->title;
+    $layout_data['navigation'] = $this->set_nav();
+    $layout_data['body'] = $this->load->view( 'error/empty_method', '', TRUE );
+    $layout_data['footer'] = $this->load->view( 'templates/footer', '', TRUE );
+
+    $this->load->view( 'layouts/main', $layout_data );
   
   }
 
@@ -116,10 +124,12 @@ class Location extends CI_Controller {
     // // //
     // // // Else, redirect to location/edit and set flash to fail with error message
 
-    $this->load->view( 'templates/header');
-    $this->load->view( 'error/empty_method');
-    $this->load->view( 'templates/footer');
-    $this->output->enable_profiler(TRUE);
+    $layout_data['title'] = $this->title;
+    $layout_data['navigation'] = $this->set_nav();
+    $layout_data['body'] = $this->load->view( 'error/empty_method', '', TRUE );
+    $layout_data['footer'] = $this->load->view( 'templates/footer', '', TRUE );
+
+    $this->load->view( 'layouts/main', $layout_data );
   
   
   }
@@ -138,10 +148,12 @@ class Location extends CI_Controller {
     //
     // Else, remove location record from database
 
-    $this->load->view( 'templates/header');
-    $this->load->view( 'error/empty_method');
-    $this->load->view( 'templates/footer');
-    $this->output->enable_profiler(TRUE);
+    $layout_data['title'] = $this->title;
+    $layout_data['navigation'] = $this->set_nav();
+    $layout_data['body'] = $this->load->view( 'error/empty_method', '', TRUE );
+    $layout_data['footer'] = $this->load->view( 'templates/footer', '', TRUE );
+
+    $this->load->view( 'layouts/main', $layout_data );
     
   
   }

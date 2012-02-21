@@ -14,7 +14,9 @@
  *
  */
 
-class Request extends CI_Controller {
+class Request extends MY_Controller {
+
+  public $title = 'Storage Locations';
 
   public function __construct() {
   
@@ -37,10 +39,12 @@ class Request extends CI_Controller {
     // Else, query database for all requests
     // Table should show date, time, requestor, request type
 
-    $this->load->view( 'templates/header');
-    $this->load->view( 'error/empty_method');
-    $this->load->view( 'templates/footer');
-    $this->output->enable_profiler(TRUE);
+    $layout_data['title'] = $this->title;
+    $layout_data['navigation'] = $this->set_nav();
+    $layout_data['body'] = $this->load->view( 'error/empty_method', '', TRUE );
+    $layout_data['footer'] = $this->load->view( 'templates/footer', '', TRUE );
+
+    $this->load->view( 'layouts/main', $layout_data );
   
   
   }
@@ -59,10 +63,12 @@ class Request extends CI_Controller {
     //
     // Else, query database for request ID
 
-    $this->load->view( 'templates/header');
-    $this->load->view( 'error/empty_method');
-    $this->load->view( 'templates/footer');
-    $this->output->enable_profiler(TRUE);
+    $layout_data['title'] = $this->title;
+    $layout_data['navigation'] = $this->set_nav();
+    $layout_data['body'] = $this->load->view( 'error/empty_method', '', TRUE );
+    $layout_data['footer'] = $this->load->view( 'templates/footer', '', TRUE );
+
+    $this->load->view( 'layouts/main', $layout_data );
   
   
   }
@@ -89,10 +95,12 @@ class Request extends CI_Controller {
     // // //
     // // // Else, redirect to request/create and set flash to fail with error message
 
-    $this->load->view( 'templates/header');
-    $this->load->view( 'error/empty_method');
-    $this->load->view( 'templates/footer');
-    $this->output->enable_profiler(TRUE);
+    $layout_data['title'] = $this->title;
+    $layout_data['navigation'] = $this->set_nav();
+    $layout_data['body'] = $this->load->view( 'error/empty_method', '', TRUE );
+    $layout_data['footer'] = $this->load->view( 'templates/footer', '', TRUE );
+
+    $this->load->view( 'layouts/main', $layout_data );
   
   
   }
@@ -119,10 +127,13 @@ class Request extends CI_Controller {
     // // // If record update passes, redirect to request/view and set flash as successful
     // // //
     // // // Else, redirect to request/edit and set flash to fail with error message
-    $this->load->view( 'templates/header');
-    $this->load->view( 'error/empty_method');
-    $this->load->view( 'templates/footer');
-    $this->output->enable_profiler(TRUE);
+
+    $layout_data['title'] = $this->title;
+    $layout_data['navigation'] = $this->set_nav();
+    $layout_data['body'] = $this->load->view( 'error/empty_method', '', TRUE );
+    $layout_data['footer'] = $this->load->view( 'templates/footer', '', TRUE );
+
+    $this->load->view( 'layouts/main', $layout_data );
   
   
   }
@@ -149,10 +160,12 @@ class Request extends CI_Controller {
     //
     // Redirect to request/index
   
-    $this->load->view( 'templates/header');
-    $this->load->view( 'error/empty_method');
-    $this->load->view( 'templates/footer');
-    $this->output->enable_profiler(TRUE);
+    $layout_data['title'] = $this->title;
+    $layout_data['navigation'] = $this->set_nav();
+    $layout_data['body'] = $this->load->view( 'error/empty_method', '', TRUE );
+    $layout_data['footer'] = $this->load->view( 'templates/footer', '', TRUE );
+
+    $this->load->view( 'layouts/main', $layout_data );
   
   
   }
@@ -179,10 +192,12 @@ class Request extends CI_Controller {
     //
     // Redirect to request/index
 
-    $this->load->view( 'templates/header');
-    $this->load->view( 'error/empty_method');
-    $this->load->view( 'templates/footer');
-    $this->output->enable_profiler(TRUE);
+    $layout_data['title'] = $this->title;
+    $layout_data['navigation'] = $this->set_nav();
+    $layout_data['body'] = $this->load->view( 'error/empty_method', '', TRUE );
+    $layout_data['footer'] = $this->load->view( 'templates/footer', '', TRUE );
+
+    $this->load->view( 'layouts/main', $layout_data );
   
   
   }
@@ -208,10 +223,12 @@ class Request extends CI_Controller {
     // Send email to requestor
     // Redirect to request/index with flashdata set to accepted
   
-    $this->load->view( 'templates/header');
-    $this->load->view( 'error/empty_method');
-    $this->load->view( 'templates/footer');
-    $this->output->enable_profiler(TRUE);
+    $layout_data['title'] = $this->title;
+    $layout_data['navigation'] = $this->set_nav();
+    $layout_data['body'] = $this->load->view( 'error/empty_method', '', TRUE );
+    $layout_data['footer'] = $this->load->view( 'templates/footer', '', TRUE );
+
+    $this->load->view( 'layouts/main', $layout_data );
 
   }
 
@@ -236,6 +253,12 @@ class Request extends CI_Controller {
     // Send email to requestor
     // Redirect to request/index with flashdata set to denied
   
+    $layout_data['title'] = $this->title;
+    $layout_data['navigation'] = $this->set_nav();
+    $layout_data['body'] = $this->load->view( 'error/empty_method', '', TRUE );
+    $layout_data['footer'] = $this->load->view( 'templates/footer', '', TRUE );
+
+    $this->load->view( 'layouts/main', $layout_data );
   }
 
   /**
@@ -258,10 +281,12 @@ class Request extends CI_Controller {
     // // request_id = request.request_id
     // Redirect to request/view with flashdata set to cancelled
   
-    $this->load->view( 'templates/header');
-    $this->load->view( 'error/empty_method');
-    $this->load->view( 'templates/footer');
-    $this->output->enable_profiler(TRUE);
+    $layout_data['title'] = $this->title;
+    $layout_data['navigation'] = $this->set_nav();
+    $layout_data['body'] = $this->load->view( 'error/empty_method', '', TRUE );
+    $layout_data['footer'] = $this->load->view( 'templates/footer', '', TRUE );
+
+    $this->load->view( 'layouts/main', $layout_data );
   
   
   }

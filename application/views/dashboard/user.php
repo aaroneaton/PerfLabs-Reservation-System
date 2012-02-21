@@ -1,7 +1,7 @@
 <div class="row">
   <div class="span8">
 
-    <h1>Welcome, John Doe!</h1>
+  <h1>Welcome, <?php echo $user_name; ?>!</h1>
 
     <hr />
 
