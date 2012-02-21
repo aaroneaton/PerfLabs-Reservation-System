@@ -6,25 +6,28 @@
 
 class Dashboard extends MY_Controller {
 
+  public $title = 'Dashboard';
   public function __construct() {
   
     parent::__construct();
 
-    $this->load->model( 'auth_model' );
-    $this->load->library( 'auth_lib' );
   
   }
 
   public function index() {
   
-    $data[ 'title' ] = 'Dashboard';
 
-    $data[ 'anchor' ] = $this->auth_lib->login_out_link();
+    $session = $this->session->userdata( 'user_data' );
+    $body_data['user_name'] = $session['firstname'];
 
-    $this->load->view( 'templates/header', $data );
-    $this->load->view( 'dashboard/user', $data );
-    $this->load->view( 'templates/footer' );
-    $this->output->enable_profiler(TRUE);
+    $footer_data = 'Test';
+
+    $layout_data['title'] = $this->title;
+    $layout_data['navigation'] = $this->set_nav();
+    $layout_data['body'] = $this->load->view( 'dashboard/user', $body_data, TRUE );
+    $layout_data['footer'] = $this->load->view( 'templates/footer', $footer_data, TRUE );
+
+    $this->load->view( 'layouts/main', $layout_data );
   
   }
 

@@ -12,7 +12,9 @@
  *
  */
 
-class Equipment extends CI_Controller {
+class Equipment extends MY_Controller {
+
+  public $title = 'Equipment';
 
   public function __construct() {
   
@@ -35,11 +37,12 @@ class Equipment extends CI_Controller {
     // Else, query database for all equipment
     // Table should show Custom ID, Name, Qty, Status, User ID
 
-    $this->load->view( 'templates/header');
-    $this->load->view( 'error/empty_method');
-    $this->load->view( 'templates/footer');
-    $this->output->enable_profiler(TRUE);
-  
+    $layout_data['title'] = $this->title;
+    $layout_data['navigation'] = $this->set_nav();
+    $layout_data['body'] = $this->load->view( 'error/empty_method', '', TRUE );
+    $layout_data['footer'] = $this->load->view( 'templates/footer', '', TRUE );
+
+    $this->load->view( 'layouts/main', $layout_data );
   
   }
 
@@ -57,10 +60,12 @@ class Equipment extends CI_Controller {
     //
     // Else, query database for equipment ID
 
-    $this->load->view( 'templates/header');
-    $this->load->view( 'error/empty_method');
-    $this->load->view( 'templates/footer');
-    $this->output->enable_profiler(TRUE);
+    $layout_data['title'] = $this->title;
+    $layout_data['navigation'] = $this->set_nav();
+    $layout_data['body'] = $this->load->view( 'error/empty_method', '', TRUE );
+    $layout_data['footer'] = $this->load->view( 'templates/footer', '', TRUE );
+
+    $this->load->view( 'layouts/main', $layout_data );
   
   
   }
@@ -87,10 +92,12 @@ class Equipment extends CI_Controller {
     // // //
     // // // Else, redirect to equipment/create and set flash to fail with error message
 
-    $this->load->view( 'templates/header');
-    $this->load->view( 'error/empty_method');
-    $this->load->view( 'templates/footer');
-    $this->output->enable_profiler(TRUE);
+    $layout_data['title'] = $this->title;
+    $layout_data['navigation'] = $this->set_nav();
+    $layout_data['body'] = $this->load->view( 'error/empty_method', '', TRUE );
+    $layout_data['footer'] = $this->load->view( 'templates/footer', '', TRUE );
+
+    $this->load->view( 'layouts/main', $layout_data );
   
   
   }
@@ -118,10 +125,12 @@ class Equipment extends CI_Controller {
     // // //
     // // // Else, redirect to equipment/edit and set flash to fail with error message
 
-    $this->load->view( 'templates/header');
-    $this->load->view( 'error/empty_method');
-    $this->load->view( 'templates/footer');
-    $this->output->enable_profiler(TRUE);
+    $layout_data['title'] = $this->title;
+    $layout_data['navigation'] = $this->set_nav();
+    $layout_data['body'] = $this->load->view( 'error/empty_method', '', TRUE );
+    $layout_data['footer'] = $this->load->view( 'templates/footer', '', TRUE );
+
+    $this->load->view( 'layouts/main', $layout_data );
   
   
   }
@@ -145,10 +154,12 @@ class Equipment extends CI_Controller {
     // // user_id = user ID
     // Redirect to equipment/index with flashdata set to Seen
 
-    $this->load->view( 'templates/header');
-    $this->load->view( 'error/empty_method');
-    $this->load->view( 'templates/footer');
-    $this->output->enable_profiler(TRUE);
+    $layout_data['title'] = $this->title;
+    $layout_data['navigation'] = $this->set_nav();
+    $layout_data['body'] = $this->load->view( 'error/empty_method', '', TRUE );
+    $layout_data['footer'] = $this->load->view( 'templates/footer', '', TRUE );
+
+    $this->load->view( 'layouts/main', $layout_data );
   
   }
 
@@ -166,10 +177,11 @@ class Equipment extends CI_Controller {
     //
     // Else, remove equipment record from database
 
-    $this->load->view( 'templates/header');
-    $this->load->view( 'error/empty_method');
-    $this->load->view( 'templates/footer');
-    $this->output->enable_profiler(TRUE);
+    $layout_data['navigation'] = $this->set_nav();
+    $layout_data['body'] = $this->load->view( 'error/empty_method', '', TRUE );
+    $layout_data['footer'] = $this->load->view( 'templates/footer', '', TRUE );
+
+    $this->load->view( 'layouts/main', $layout_data );
     
   
   }
