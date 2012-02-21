@@ -48,7 +48,7 @@ class Auth extends CI_Controller {
    */
   public function login() {
   
-    $auth = $this->session->userdata('netID');
+    $auth = $this->session->userdata('is_logged_in');
 
     if( empty($auth) ) {
     
@@ -82,8 +82,24 @@ class Auth extends CI_Controller {
         );
         $this->session->set_userdata($auth);
 
-        redirect( '/auth/', 'location', 302 );
-        // header('Location: /auth_test', true, 302);
+        $this->load->model( 'auth_model' );
+        $query = $this->auth_model->validate();
+
+        if( $query ) {
+        
+          $data = array(
+            'is_logged_in' => TRUE,
+            'user_role' => $this->auth_model->get_user_role(),
+          );
+          $this->session->set_userdata( $data );
+          redirect( '/dashboard/' );
+        
+        } else {
+        
+          show_error( 'You are not authorized to use this system' );
+        
+        }
+
       }
       
     } else {
@@ -103,15 +119,9 @@ class Auth extends CI_Controller {
    */
   public function logout() {
   
-    $array_items = array(
-      'ticketID' => '',
-      'netID' => '',
-      'uin' => '',
-    );
-
-    $this->session->unset_userdata( $array_items );
+    $this->session->sess_destroy();
+    redirect( '/dashboard/' );
     
-    redirect( '/auth/', 'refresh');
   
   }
 
