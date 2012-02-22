@@ -31,4 +31,25 @@ class User_model extends CI_Model {
   
   }
 
+  function create_user( $user ) {
+  
+    $this->db->set( 'net_id', $user['net_id'] );
+    $this->db->insert( 'user' );
+
+    $this->db->select( '*' );
+    $this->db->from( 'user' );
+
+    $user_id = $this->db->insert_id();
+    $this->create_user_meta( $user_id, $user['user_role'] );
+  
+  }
+
+  private function create_user_meta( $user_id, $user_role ) {
+  
+    $this->db->set( 'user_id', $user_id );
+    $this->db->set( 'user_role_id', $user_role );
+    return $this->db->insert( 'user_meta' );
+  
+  }
+
 }

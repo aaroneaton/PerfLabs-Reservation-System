@@ -92,9 +92,72 @@ class User extends MY_Controller {
   public function create() {
 
     // Check if user is an admin
+    $session = $this->session->userdata( 'user_data' );
+    if ( $session['user_role'] < 40 ) {
+    
     // If not, show 'no access' page
-    //
+      show_error( 'You are not authorized to access this page' );
+    
+    } else {
+    
     // Else, move on to form
+      $this->load->helper( array( 'form', 'url' ) );
+      $this->load->library( 'form_validation' );
+      $this->form_validation->set_rules( 'net_id', 'Net ID', 'required' );
+
+      // Check if form validation has run
+      if ( $this->form_validation->run() == FALSE ) {
+
+        // If not, setup and show the form
+        $body_data['form_attr'] = array( 'id' => 'new-user-form', 'class' => 'form-horizontal' );
+        $body_data['form_fields'] = array(
+          'net_id' => array(
+            'name' => 'net_id',
+            'id' => 'net_id',
+            'placehoder' => 'TAMU NetID',
+          ), // net_id
+          'user_role' => array(
+            'name' => 'user_role',
+            'id' => 'user_role',
+            'options' => array( // TODO - Pull options from DB
+              '10' => 'Student',
+              '20' => 'Studio User',
+              '30' => 'Faculty/Staff',
+              '40' => 'Manager',
+              '50' => 'Adminstrator',
+            ), // options
+          ), // user_role
+          'form_submit' => array(
+            'name' => 'form_submit',
+            'id' => 'form_submit',
+            'value' => 'Create User',
+            'class' => 'btn btn-primary',
+          ), // form_submit
+        ); // form_fields
+
+        $layout_data['title'] = $this->title;
+        $layout_data['navigation'] = $this->set_nav();
+        $layout_data['body'] = $this->load->view( 'user/create', $body_data, TRUE );
+        $layout_data['footer'] = $this->load->view( 'templates/footer', '', TRUE );
+
+        $this->load->view( 'layouts/main', $layout_data );
+      
+      } else {
+      
+        // Get post data from form
+        $user = $this->input->post();
+
+        // Pass $user along to User_model to create the user record
+        $this->user_model->create_user( $user );
+
+        //$this->session->flashdata( 'success_message', 'User created' );
+        //redirect( 'user' );
+      
+      }
+    
+    }
+
+
     //
     // // Check if form validation has run
     // // If not, load the form view
@@ -104,12 +167,6 @@ class User extends MY_Controller {
     // // //
     // // // Else, redirect to user/create and set flash to fail with error message
   
-    $layout_data['title'] = $this->title;
-    $layout_data['navigation'] = $this->set_nav();
-    $layout_data['body'] = $this->load->view( 'error/empty_method', '', TRUE );
-    $layout_data['footer'] = $this->load->view( 'templates/footer', '', TRUE );
-
-    $this->load->view( 'layouts/main', $layout_data );
   
   }
 
