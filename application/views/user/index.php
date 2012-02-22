@@ -1,7 +1,13 @@
 <div class="row">
+  <div class="span8">
+    <h1>Users Table</h1>
+  </div>
+  <div class="span4">
+    <?php echo anchor( 'user/create', 'Add New User', array( 'class' => 'btn btn-primary', 'id' => 'new-user-btn') ); ?>
+  </div>
+</div>
+<div class="row">
   <div class="span12">
-    <h1 class="page-heading">Users Table</h1>
-    <hr />
     <table id="user-table" class="table table-bordered table-striped">
       <thead>
         <tr>
