@@ -104,6 +104,7 @@ class User extends MY_Controller {
       $this->load->helper( array( 'form', 'url' ) );
       $this->load->library( 'form_validation' );
 
+      // Setup form validation and errors
       $this->form_validation->set_message( 'is_unique', 'This user already exists' );
       $this->form_validation->set_error_delimiters( '<div class="row"><div class="span3 offset2"><div class="alert alert-error"><a class="close" data-dismiss="alert">x</a>', '</div></div></div>');
       $this->form_validation->set_rules( 'net_id', 'Net ID', 'required|is_unique[user.net_id]' );
@@ -159,10 +160,6 @@ class User extends MY_Controller {
       }
     
     }
-
-
-    // // // Else, redirect to user/create and set flash to fail with error message
-  
   
   }
 
@@ -205,9 +202,21 @@ class User extends MY_Controller {
    * @param int UserID
    *
    */
-  public function remove() {
+  public function remove( $user_id ) {
 
     // Check if user is an admin
+    $session = $this->session->userdata( 'user_data' );
+    if ( $session['user_role'] != 50 ) {
+
+      show_error( 'You are not authorized to remove users.' );
+
+    } else {
+    
+      $this->user_model->remove_user( $user_id );
+      $this->session->set_flashdata( 'success_message', 'User has been removed successfully' );
+      redirect( 'user' );
+    
+    }
     // If not, show 'no access' page
     //
     // Else, remove user record from database
