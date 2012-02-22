@@ -14,9 +14,9 @@ class MY_Controller extends CI_Controller {
 
   public function set_nav() {
   
-    $session = $this->session->userdata( 'user_data' );
-
     $data['anchor'] = $this->auth_lib->login_out_link();
+
+    $session = $this->session->userdata( 'user_data' );
 
     $user_role = $session['user_role'];
 
