@@ -150,21 +150,14 @@ class User extends MY_Controller {
         // Pass $user along to User_model to create the user record
         $this->user_model->create_user( $user );
 
-        //$this->session->flashdata( 'success_message', 'User created' );
-        //redirect( 'user' );
+        $this->session->set_flashdata( 'success_message', 'User created' );
+        redirect( 'user' );
       
       }
     
     }
 
 
-    //
-    // // Check if form validation has run
-    // // If not, load the form view
-    // //
-    // // Else, create the records in database
-    // // // If record creation passes, redirect to user/index and set flash as successful
-    // // //
     // // // Else, redirect to user/create and set flash to fail with error message
   
   

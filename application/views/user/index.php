@@ -6,6 +6,13 @@
     <?php echo anchor( 'user/create', 'Add New User', array( 'class' => 'btn btn-primary', 'id' => 'new-user-btn') ); ?>
   </div>
 </div>
+<?php if ( $this->session->flashdata( 'success_message' ) != '' ) : ?>
+<div class="row">
+  <div class="span4">
+  <div class="alert alert-success"><a class="close" data-dismiss="alert">x</a><?php echo $this->session->flashdata( 'success_message' ); ?></div>
+  </div>
+</div>
+<?php endif; ?>
 <div class="row">
   <div class="span12">
     <table id="user-table" class="table table-bordered table-striped">
