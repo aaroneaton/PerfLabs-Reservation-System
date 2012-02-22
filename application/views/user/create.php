@@ -5,6 +5,7 @@
 </div>
 <div class="row">
   <div class="span12">
+<?php echo validation_errors(); ?>
 
 <?php echo form_open( 'user/create', $form_attr ); ?>
   <fieldset>

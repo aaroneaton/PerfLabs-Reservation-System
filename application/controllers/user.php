@@ -103,7 +103,10 @@ class User extends MY_Controller {
     // Else, move on to form
       $this->load->helper( array( 'form', 'url' ) );
       $this->load->library( 'form_validation' );
-      $this->form_validation->set_rules( 'net_id', 'Net ID', 'required' );
+
+      $this->form_validation->set_message( 'is_unique', 'This user already exists' );
+      $this->form_validation->set_error_delimiters( '<div class="row"><div class="span3 offset2"><div class="alert alert-error"><a class="close" data-dismiss="alert">x</a>', '</div></div></div>');
+      $this->form_validation->set_rules( 'net_id', 'Net ID', 'required|is_unique[user.net_id]' );
 
       // Check if form validation has run
       if ( $this->form_validation->run() == FALSE ) {
@@ -150,7 +153,7 @@ class User extends MY_Controller {
         // Pass $user along to User_model to create the user record
         $this->user_model->create_user( $user );
 
-        $this->session->set_flashdata( 'success_message', 'User created' );
+        $this->session->set_flashdata( 'success_message', 'User created successfully' );
         redirect( 'user' );
       
       }
