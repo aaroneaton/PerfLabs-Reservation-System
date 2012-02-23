@@ -31,6 +31,22 @@ class User_model extends CI_Model {
   
   }
 
+  function get_user_meta( $user_id ) {
+  
+    $this->db->select( '*' );
+    $this->db->from( 'user' );
+    $this->db->where( 'user.user_id',  $user_id );
+    $this->db->join( 'user_meta', 'user.user_id = user_meta.user_id' );
+    $this->db->join( 'user_role', 'user_meta.user_role_id = user_role.user_role_id' );
+
+    $query = $this->db->get();
+
+    $user_meta = $query->row_array();
+
+    return $user_meta;
+  
+  }
+
   function create_user( $user ) {
   
     $this->db->set( 'net_id', $user['net_id'] );
@@ -60,3 +76,4 @@ class User_model extends CI_Model {
   }
 
 }
+
