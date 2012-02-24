@@ -68,6 +68,21 @@ class User_model extends CI_Model {
   
   }
 
+  function update_user_meta( $user_meta ) {
+  
+    $data = array(
+      'first_name' => $user_meta['first_name'],
+      'last_name' => $user_meta['last_name'],
+      'email' => $user_meta['email'],
+      'phone' => $user_meta['phone'],
+      'user_role_id' => $user_meta['user_role'],
+    );
+
+    $this->db->where( 'user_id', $user_meta['user_id'] );
+    $this->db->update( 'user_meta', $data );
+  
+  }
+
   function remove_user( $user_id ) {
   
     $this->db->where( 'user_id', $user_id );
