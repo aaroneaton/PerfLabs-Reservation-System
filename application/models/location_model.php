@@ -67,4 +67,11 @@ class Location_model extends CI_Model {
   
   }
 
+  function remove_location( $l ) {
+  
+    $this->db->where( 'equipment_location_id', $l );
+    $this->db->delete( 'equipment_location' );
+  
+  }
+
 }
