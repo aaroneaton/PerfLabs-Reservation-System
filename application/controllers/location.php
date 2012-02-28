@@ -66,16 +66,26 @@ class Location extends MY_Controller {
    * Displays a single storage location
    *
    */
-  public function view() {
+  public function view( $location ) {
   
     // Check if user is an admin OR manager
+    $session = $this->session->userdata( 'user_data' );
+    if ( $session['user_role'] < 40 ) {
+    
+      show_error( 'You are not authorized to access this page' );
+    
+    } else {
+    
+      $body_data['location']= $this->location_model->get_location( $location );
+    
+    }
     // If not, show 'no access' page
     //
     // Else, query database for location ID
 
     $layout_data['title'] = $this->title;
     $layout_data['navigation'] = $this->set_nav();
-    $layout_data['body'] = $this->load->view( 'error/empty_method', '', TRUE );
+    $layout_data['body'] = $this->load->view( 'location/view', $body_data, TRUE );
     $layout_data['footer'] = $this->load->view( 'templates/footer', '', TRUE );
 
     $this->load->view( 'layouts/main', $layout_data );

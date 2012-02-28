@@ -12,13 +12,15 @@ class Location_model extends CI_Model {
   public function __construct() {
   
     parent::__construct();
+
+    $this->table = 'equipment_location';
   
   }
 
   function get_all_locations() {
   
     $this->db->select( '*' );
-    $this->db->from ( 'equipment_location' );
+    $this->db->from ( $this->table );
 
     $query = $this->db->get();
 
@@ -34,7 +36,21 @@ class Location_model extends CI_Model {
     $this->db->set( 'room', $l['room'] );
     $this->db->set( 'area', $l['area'] );
 
-    $this->db->insert( 'equipment_location' );
+    $this->db->insert( $this->table );
+  
+  }
+
+  function get_location( $l ) {
+  
+    $this->db->select( '*' );
+    $this->db->from ( $this->table );
+    $this->db->where( 'equipment_location_id', $l );
+
+    $query = $this->db->get();
+
+    $location = $query->row_array();
+
+    return $location;
   
   }
 
