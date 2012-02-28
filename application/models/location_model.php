@@ -28,4 +28,14 @@ class Location_model extends CI_Model {
   
   }
 
+  function create_location( $l ) {
+  
+    $this->db->set( 'bldg', $l['building'] );
+    $this->db->set( 'room', $l['room'] );
+    $this->db->set( 'area', $l['area'] );
+
+    $this->db->insert( 'equipment_location' );
+  
+  }
+
 }

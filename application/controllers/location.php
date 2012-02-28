@@ -93,24 +93,71 @@ class Location extends MY_Controller {
   public function create() {
   
     // Check if user is an admin OR manager
-    // If not, show 'no access' page
-    //
-    // Else, move on to form
-    //
-    // // Check if form validation has run
-    // // If not, load the form view
-    // //
-    // // Else, create the records in database
-    // // // If record creation passes, redirect to location/index and set flash as successful
-    // // //
-    // // // Else, redirect to location/create and set flash to fail with error message
+    $session = $this->session->userdata( 'user_data' );
+    if ( $session['user_role'] < 40 ) {
+    
+      // If not, show 'no access' page
+      show_error( 'You are not authorized to access this page' );
+    
+    } else {
+    
+      // Else, move on to form
+      $this->load->helper( array( 'form', 'url' ) );
+      $this->load->library( 'form_validation' );
 
-    $layout_data['title'] = $this->title;
-    $layout_data['navigation'] = $this->set_nav();
-    $layout_data['body'] = $this->load->view( 'error/empty_method', '', TRUE );
-    $layout_data['footer'] = $this->load->view( 'templates/footer', '', TRUE );
+      // Setup form validation and errors
+      $this->form_validation->set_rules( 'building', 'Building', 'required' );
+      $this->form_validation->set_rules( 'room', 'Room', 'required' );
+      $this->form_validation->set_rules( 'area', 'Area', 'required' );
 
-    $this->load->view( 'layouts/main', $layout_data );
+      // Check if form validation has run
+      if ( $this->form_validation->run() == FALSE ) {
+      
+        // If not, setup and show the form
+        $body_data['form_attr'] = array( 'id' => 'new-location-form', 'class' => 'form-horizontal' );
+        $body_data['form_fields'] = array(
+          'building' => array(
+            'name' => 'building',
+            'id' => 'building',  
+          ),
+          'room' => array(
+            'name' => 'room',
+            'id' => 'room',
+          ),
+          'area' => array(
+            'name' => 'area',
+            'id' => 'area',
+          ),
+          'form_submit' => array(
+            'name' => 'form-submit',
+            'id' => 'form-submit',
+            'class' => 'btn btn-primary',
+            'value' => 'Create Location',
+          ),
+        );
+
+        $layout_data['title'] = $this->title;
+        $layout_data['navigation'] = $this->set_nav();
+        $layout_data['body'] = $this->load->view( 'location/create', $body_data, TRUE );
+        $layout_data['footer'] = $this->load->view( 'templates/footer', '', TRUE );
+
+        $this->load->view( 'layouts/main', $layout_data );
+      
+      } else {
+      
+        // Get the form input
+        $location = $this->input->post();
+
+        // Create the location in the database
+        $this->location_model->create_location( $location );
+
+        // Set the success message and redirect to index
+        $this->session->set_flashdata( 'success_message', 'Location created successfully' );
+        redirect( 'location' );
+      
+      }
+    
+    }
   
   }
 
