@@ -54,4 +54,17 @@ class Location_model extends CI_Model {
   
   }
 
+  function edit_location( $l ) {
+  
+    $data = array(
+      'bldg' => $l['building'],
+      'room' => $l['room'],
+      'area' => $l['area'],
+    );
+
+    $this->db->where( 'equipment_location_id', $l['location_id'] );
+    $this->db->update( 'equipment_location', $data );
+  
+  }
+
 }
