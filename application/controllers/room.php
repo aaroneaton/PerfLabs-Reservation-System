@@ -238,7 +238,6 @@ class Room extends MY_Controller {
 
 	} 
   
-  
   }
 
   /**
@@ -248,19 +247,20 @@ class Room extends MY_Controller {
    * Removes room
    *
    */
-  public function remove() {
+  public function remove( $room ) {
   
     // Check if user is an admin
-    // If not, show 'no access' page
-    //
-    // Else, remove room record from database
-
-    $layout_data['title'] = $this->title;
-    $layout_data['navigation'] = $this->set_nav();
-    $layout_data['body'] = $this->load->view( 'error/empty_method', '', TRUE );
-    $layout_data['footer'] = $this->load->view( 'templates/footer', '', TRUE );
-
-    $this->load->view( 'layouts/main', $layout_data );
+    $session = $this->session->userdata( 'user_data' );
+    if( $session['user_role'] < 40 ) {
+    
+      show_error( 'You are not authorized to access this page' );
+    
+    } else {
+    
+      $this->room_model->remove_room( $room );
+      redirect( 'room' );
+    
+    }
     
   
   }
