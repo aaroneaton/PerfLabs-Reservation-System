@@ -66,16 +66,23 @@ class Room extends MY_Controller {
    * Displays a single room
    *
    */
-  public function view() {
+  public function view( $room ) {
   
     // Check if user is an admin OR manager
-    // If not, show 'no access' page
-    //
+	$session = $this->session->userdata( 'user_data' );
+	if ( $session['user_role'] < 40 ) {
+    
+		// If not, show 'no access' page
+		show_error( 'You are not authorized to access this page' );
+	
+	} else {
     // Else, query database for room ID
+		$body_data['room'] = $this->room_model->get_room( $room );
 
+	}
     $layout_data['title'] = $this->title;
     $layout_data['navigation'] = $this->set_nav();
-    $layout_data['body'] = $this->load->view( 'error/empty_method', '', TRUE );
+    $layout_data['body'] = $this->load->view( 'room/view', $body_data, TRUE );
     $layout_data['footer'] = $this->load->view( 'templates/footer', '', TRUE );
 
     $this->load->view( 'layouts/main', $layout_data );

@@ -47,7 +47,7 @@ class Room_model extends CI_Model {
 
     $query = $this->db->get();
 
-    $location = $query->row_array();
+    $room = $query->row_array();
 
     return $room;
   
