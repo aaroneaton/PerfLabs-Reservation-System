@@ -57,7 +57,7 @@ class Room_model extends CI_Model {
   
     $data = array(
       'bldg' => $r['building'],
-      'room' => $r['room'],
+      'number' => $r['room'],
     );
 
     $this->db->where( 'room_id', $r['room_id'] );

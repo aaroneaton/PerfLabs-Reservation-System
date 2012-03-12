@@ -169,27 +169,74 @@ class Room extends MY_Controller {
    * Creates form to edit room
    *
    */
-  public function edit() {
+  public function edit( $room ) {
   
-    // Check if user is an admin OR manager
-    // If not, show no access page
-    //
-    // Else, query database for the room ID
-    //
-    // // Check if form validation has run
-    // // If not, load the form view
-    // //
-    // // Else, update the record in database
-    // // // If record update passes, redirect to room/show and set flash as successful
-    // // //
-    // // // Else, redirect to room/edit and set flash to fail with error message
+        // Check if user is an admin OR manager
+	$session = $this->session->userdata( 'user_data' );
+	if ( $session['user_role'] < 40 ) {
+		// If not, show 'no access' page
+		show_error( 'You are not authorized to access this page');
+	
+	} else {
+		
+		// Get current room information
+		$current = $this->room_model->get_room( $room );
+		
+		// Else, move on to form
+		$this->load->helper( array( 'form', 'url' ) );
+		$this->load->library( 'form_validation' );
+		
+		// Setup form validation & errors
+		$this->form_validation->set_rules( 'building', 'Building', 'required' );
+		$this->form_validation->set_rules( 'room', 'Room', 'required' );
+		
+		// Check if form validation has run
+		if ( $this->form_validation->run() == FALSE ) {
+		
+			// If not, load the form view
+			$body_data['form_attr'] = array( 'id' => 'edit-room-form', 'class' => 'form-horizontal' );
+			$body_data['hidden'] = array( 'room_id' => $room );
+			$body_data['form_fields'] = array(
+				'building' => array(
+					'name' => 'building',
+					'id' => 'building',
+					'value' => set_value( 'building', $current['bldg'] ),
+				),
+				'room' => array(
+					'name' => 'room',
+					'id' => 'room',
+					'value' => set_value( 'room', $current['number'] ),
+				),
+				'form_submit' => array(
+					'name' => 'form-submit',
+					'id' => 'form-submit',
+					'class' => 'btn btn-primary',
+					'value' => 'Edit Room',
+				),
+			);
+			
+			$layout_data['title'] = $this->title;
+			$layout_data['navigation'] = $this->set_nav();
+			$layout_data['body'] = $this->load->view( 'room/edit', $body_data, TRUE );
+			$layout_data['footer'] = $this->load->view( 'templates/footer', '', TRUE );
+			
+			$this->load->view( 'layouts/main', $layout_data );
+		
+		} else {
+		
+			// Get the form input
+			$room = $this->input->post();
 
-    $layout_data['title'] = $this->title;
-    $layout_data['navigation'] = $this->set_nav();
-    $layout_data['body'] = $this->load->view( 'error/empty_method', '', TRUE );
-    $layout_data['footer'] = $this->load->view( 'templates/footer', '', TRUE );
+			// Create the room in the database
+			$this->room_model->edit_room( $room );
 
-    $this->load->view( 'layouts/main', $layout_data );
+			// Set the success message and redirect to index
+			$this->session->set_flashdata( 'success_message', 'Room created successfully' );
+			redirect( 'room' );
+		
+		}
+
+	} 
   
   
   }
